@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="images/logo.jpg">
+    <title>Contact us</title>
+    <link rel="stylesheet" type="text/css" href="css.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script type="text/javascript">
+
+        function validate(){
+
+            var name = document.getElementById("name");
+            var email = document.getElementById("email");
+            var subj = document.getElementById("subject");
+            var msg = document.getElementById("textar");
+            if(name.value==""){
+              // swal("Please fill out all fields");
+                name.classList.add("borderst");
+                document.getElementById("namemsg").innerHTML=" Please type your name";
+                return false;
+            }else if(email.value==""){
+                //swal("Please fill out all fields");
+                email.classList.add("borderst");
+                document.getElementById("emailmsg").innerHTML="Please type your email";
+                return false;
+
+            }else if (subj.value==""){
+                subj.classList.add("borderst");
+                document.getElementById("subjmsg").innerHTML="Please type your subject";
+                return false;
+
+            }else if (msg.value==""){
+                msg.classList.add("borderst");
+                document.getElementById("msgmsg").innerHTML="Please type your message";
+                return false;
+            }
+        }
+
+        function nameremove(){
+           
+           document.getElementById("name").classList.remove("borderst");
+           document.getElementById("namemsg").innerHTML="";
+        }
+
+        function emailremove(){
+           
+           document.getElementById("email").classList.remove("borderst");
+           document.getElementById("emailmsg").innerHTML="";
+        }
+
+        
+        function subjremove(){
+           
+           document.getElementById("subject").classList.remove("borderst");
+           document.getElementById("subjmsg").innerHTML="";
+        }
+
+        function msgremove(){
+           
+           document.getElementById("textar").classList.remove("borderst");
+           document.getElementById("msgmsg").innerHTML="";
+        }
+
+    </script>
+    <script type="text/javascript">
+
+         $(document).ready(function(){
+        //     $('.contact-form-btn').click(function(){
+        //         swal("Hello world!");
+        //     })
+
+        $('form[name=test]').submit(function(e) {
+   e.preventDefault();
+//    window.scrollTo(5000,500);
+
+   // a sample AJAX request
+   $.ajax({
+     url : this.action,
+     type : this.method,
+     data : $(this).serialize(),
+     success : function(response) {
+        $('.contact-form').slideUp(750);
+        $('#sub-msg').fadeIn(4000);
+     }
+   });
+});
+         });
+    </script>
+</head>
+
+<body>
+    <div class="contact-section">
+        <div class="cover">
+             <a href="index.html"><p style="text-align:center; color: lightskyblue; font-size: 1em; text-decoration: underline;">Home</p></a>
+        <h1>Contact us</h1>  
+         
+        <form class="contact-form" onsubmit="return validate()" action="contact.php" method="post">
+            <input type="text" class="contact-form-text" placeholder="Name" name="name" id="name" onkeypress="nameremove()">
+            <p id="namemsg" style="color:red;"></p>
+            <input type="email" class="contact-form-text" placeholder="Email" name="email" id="email" onkeypress="emailremove()">
+            <p id="emailmsg" style="color:red;"></p>
+            <input type="text" class="contact-form-text" placeholder="Subject" name="submit" id="subject" onkeypress="subjremove()">
+            <p id="subjmsg" style="color:red;"></p>
+            <textarea class="contact-form-text" placeholder="Your message" id="textar" onkeypress="msgremove()"></textarea>
+            <p id="msgmsg" style="color:red;"></p>
+            <input type="submit" class="contact-form-btn" value="Send" name="submit" name="message">
+            
+        </form>
+            <h2 id="sub-msg" style="color:white; display:none;">Thank you for contacting us, we will response to you as soon as possible</h2>
+        </div>
+    </div>
+    <!--contact form-->
+    <div id="info">
+            <div id="info-text" class="continfo">
+                    <h4>Main office</h4>
+        <p class="cop"><i class="fas fa-map-marker-alt "></i>  1145 – 573 Sherling Place, Port Coquitlam, BC  V3B 0J6<br>
+            &nbsp; &nbsp; &nbsp; River’s Edge Business Park – Building 1</p>
+             <p class="cop"><i class="fas fa-phone fa-x"></i>&nbsp;  604-540-9575  Fax: 604-540-9573</p>
+              <p class="cop">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hours: Monday – Friday, 8:00 AM – 4:30 PM</p>
+               <h4>Abbotsford office</h4> 
+               <p class="cop"><i class="fas fa-map-marker-alt "></i>  106 - 1975 McCallum Rd Abbotsford V2S 3N3<br>
+                
+                </div>
+                <div id="map" class="continfo">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2604.2116604270595!2d-122.73474568463756!3d49.25343397932818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d7dca348b4ff%3A0x468d7b3bbe7bc793!2sGQ+Flooring+-+Port+Coquitlam!5e0!3m2!1sen!2sca!4v1556731771548!5m2!1sen!2sca" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+    </div>
+</body>
+
+</html>
